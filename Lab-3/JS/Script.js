@@ -5,8 +5,37 @@ function collect_data() {
     let Pname = document.getElementById("PatientName").value;
     console.log("Name: ", Pname);
 
+
+    if (Pname == "") {
+        document.getElementById("NameError").innerHTML = "Name Can Not Be Empty";
+        return false;
+    }
+    if (Pname.length < 5) {
+        document.getElementById("NameError").innerHTML = "Name at least 5 char";
+        return false;
+    }
+    console.log(Pname);
+
     let PAge = document.getElementById("PatientAge").value;
     console.log("Age: ", PAge);
+
+    if (PAge == "") {
+        document.getElementById("AgeError").innerHTML = "Age Can Not Be Empty";
+        return false;
+    }
+    if (PAge < 0) {
+        document.getElementById("AgeError").innerHTML = "Age Can Not Be Negative";
+        return false;
+    }
+
+    if (PAge < 18) {
+        document.getElementById("AgeError").innerHTML = "You are Minor";
+        return false;
+    }
+
+
+    console.log(PAge);
+
 
     let PEmail = document.getElementById("PatientEmail").value;
     console.log("Email: ", PEmail);
@@ -40,3 +69,48 @@ function collect_data() {
 
     return false;
 }
+
+
+
+/*
+let a =10;
+if(a>10)
+{
+    a++;
+    console.log("Value of a: ",a);
+}
+else{
+    a--;
+    a=11;
+    a++;
+    console.log(a);
+}
+let i; 
+for(i=0; i<5; i++)
+{
+    console.log("I (for loop): ",i);
+}
+
+i=1;
+while(i<5)
+{
+    
+    i++;
+    console.log("I (while loop): ",i);
+}
+
+do{
+    i++;
+    console.log("I (do ... while): ",i);
+}
+while(i<5)
+
+let array=["ABC", "DEF"];
+array.forEach((item, index)=>{
+    console.log("Index: ",index, "Item: ", item);
+})
+
+array.map((item, index)=>{
+    console.log("Index: ",index, "Item: ", item);
+})
+*/
