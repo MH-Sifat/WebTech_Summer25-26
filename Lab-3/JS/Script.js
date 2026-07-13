@@ -62,10 +62,39 @@ function collect_data() {
     console.log("Patient User Name: ", PUserName);
 
     let PPasswod = document.getElementById("password").value;
+    let hasLetter = false;
+    let hasNumber = false;
+    let hasSpecial = false;
+
     console.log("Patient Password: ", PPasswod);
 
     let PConPasswod = document.getElementById("Conpassword").value;
-    console.log("Patient Confirm Password: ", PPasswod);
+    console.log("Patient Confirm Password: ", PConPasswod);
+
+
+    for (let item of PConPasswod) {
+        if (item >= 'A' && item <= 'Z' || item >= 'a' && item <= 'z') {
+            hasLetter = true;
+        }
+        if (item >= '0' && item <= '9') {
+            hasNumber = true;
+        }
+        if (!(item >= 'A' && item <= 'Z' || item >= 'a' && item <= 'z') && !(item >= '0' && item <= '9')) {
+            hasSpecial = true;
+        }
+    }
+
+    if (hasLetter && !hasNumber && !hasSpecial || !hasLetter && hasNumber && !hasSpecial) {
+        document.getElementById("AlertPass").innerHTML = "Weak Password";
+    }
+    else if (hasLetter && hasNumber && !hasSpecial) {
+        document.getElementById("AlertPass").innerHTML = "Medium Password";
+    }
+    if (hasLetter && hasNumber && hasSpecial) {
+        document.getElementById("AlertPass").innerHTML = "Strong Password";
+    }
+
+    alert("Welcome");
 
     return false;
 }
